@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+/* OgmaOS fix: on the Bobcat 29X the `lora-3v3-regulator` has its `vin-supply`
+ * mis-pointed at a pinctrl node (pwm0m0-pins), causing a permanent
+ * -EPROBE_DEFER (-517) so the regulator never probes and the SX1302 RF
+ * section is left unpowered. This overlay repoints vin-supply to the
+ * always-on `vcc3v3_sys` system rail so it probes and powers up at boot. */
+/ {
+    fragment@0 {
+        target-path = "/lora-3v3-regulator";
+        __overlay__ {
+            vin-supply = <&vcc3v3_sys>;
+        };
+    };
+};

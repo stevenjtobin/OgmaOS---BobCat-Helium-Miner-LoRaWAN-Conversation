@@ -1,0 +1,13 @@
+[Unit]
+Description=OgmaOS LoRaWAN Frame Collector (Semtech UDP tap)
+After=ogma-gateway.service
+Wants=ogma-gateway.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/ogma-collector.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

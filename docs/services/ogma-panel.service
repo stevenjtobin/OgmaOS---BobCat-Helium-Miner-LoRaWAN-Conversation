@@ -1,0 +1,11 @@
+[Unit]
+Description=OgmaOS Band Monitor
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /root/ogma-panel.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

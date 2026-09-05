@@ -1,0 +1,7 @@
+[Unit]
+Description=OgmaOS RX watchdog (detect SX1302 RX stall, soft-restart, ntfy alert)
+After=ogma-gateway.service
+
+[Service]
+Type=oneshot
+ExecStart=/root/ogma-rx-watchdog.sh
